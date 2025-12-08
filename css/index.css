@@ -1,4 +1,4 @@
-/* CSS Document */
+/* CSS Document - Modified for Blue Theme */
 
 * {
     margin: 0;
@@ -31,7 +31,8 @@ a {
 }
 
 a:hover {
-    color: #C00
+    /* [修改] 链接悬停颜色：亮蓝 */
+    color: #1560e2; 
 }
 
 .clear {
@@ -41,15 +42,18 @@ a:hover {
 }
 
 /*#topbg{ background:url(../images/hn-foot-bg.jpg) no-repeat center center;  width:100%; height:159px; min-width:1200px; background:#C00 }*/
+/* 顶部背景：去掉 min-width，防止小屏滚动 */
 #topbg {
     width: 100%;
     height: 159px;
-    min-width: 1200px;
-    background: #C00
+    /* min-width: 1200px;  <-- 删除这一行 */
+    background: #1560e2; 
 }
 
+/* 顶部内容容器：改为弹性宽度 */
 #topm {
-    width: 1200px;
+    width: 100%;          /* 改为 100% */
+    max-width: 1200px;    /* 最大 1200px */
     margin: 0 auto;
     height: 159px;
     position: relative;
@@ -72,13 +76,16 @@ a:hover {
 }
 
 .menubox {
-    background: #C00
+    /* [修改] 菜单盒子背景：亮蓝 */
+    background: #1560e2;
 }
 
+/* 导航栏背景 */
 #nav-menu {
     height: 50px;
-    background: #C00;
-    width: 1200px;
+    background: #1560e2;
+    width: 100%;          /* 改为 100% */
+    max-width: 1200px;    /* 最大 1200px */
     margin: 0 auto;
 }
 
@@ -116,8 +123,9 @@ a:hover {
     text-align: center;
 }
 
+/* [修改] 导航选中/悬停颜色：亮蓝 */
 #nav-menu .menu li a.selected, #nav-menu .menu li a.navhover, #nav-menu .menu li a.xialaguang:hover {
-    color: #C00;
+    color: #1560e2;
 }
 
 #nav-menu .menu li a.navhover, #nav-menu .menu li a.xialaguang:hover {
@@ -145,7 +153,8 @@ a:hover {
     left: 5px;
     width: 124px;
     background: #FFF;
-    border: 2px solid #C00;
+    /* [修改] 下拉菜单边框：亮蓝 */
+    border: 2px solid #1560e2;
     border-top: 0;
     line-height: normal;
     z-index: 999;
@@ -170,7 +179,8 @@ a:hover {
     line-height: 32px;
     overflow: hidden;
     display: block;
-    color: #C00;
+    /* [修改] 下拉菜单文字颜色：亮蓝 */
+    color: #1560e2;
     text-align: center;
     text-decoration: none;
     font-size: 14px;
@@ -182,8 +192,9 @@ a:hover {
 }
 
 .banner {
-    width: 1200px;
-    height: 600px;
+    width: 100%;          /* 改为 100% */
+    max-width: 1200px;    /* 最大 1200px */
+    height: 600px;        /* 如果之前改过高度，保持你修改后的高度 */
     margin: 0 auto;
     background: url(../images/hnu.jpg) no-repeat center center;
     overflow: hidden;
@@ -193,8 +204,10 @@ a:hover {
     position: relative;
     z-index: 1;
     height: 600px;
-    max-width: 1200px;
+    width: 100%;          /* 改为 100% */
+    max-width: 1200px;    /* 最大 1200px */
     margin: 0 auto;
+}
 }
 
 .slideshow * {
@@ -219,7 +232,8 @@ a:hover {
 
 .slideshow .item img {
     height: 600px;
-    width: 1200px;
+    width: 100%;          /* 强制宽度 100% */
+    object-fit: cover;    /* 保持图片比例裁切，防止变形 */
     -webkit-transition: all 1s cubic-bezier(0.7, 0, 0.3, 1);
     transition: all 1s cubic-bezier(0.7, 0, 0.3, 1);
     -webkit-transform: scale(1.2);
@@ -233,6 +247,7 @@ a:hover {
 
 
 .title {
+    /* [注意] 这里有一个图片 kuang.gif 可能是红色的，需要你自己替换图片 */
     background: url(../images/kuang.gif) left center no-repeat;
     padding-left: 20px;
     height: 40px;
@@ -248,6 +263,7 @@ a:hover {
 }
 
 .more {
+    /* [注意] 这里有一个图片 more.gif 可能是红色的，需要你自己替换图片 */
     background: url(../images/more.gif) right center no-repeat;
     padding-right: 16px;
     height: 40px;
@@ -322,19 +338,45 @@ a:hover {
     zoom: 1;
 }
 
+/* 每一行项目容器 */
 .home1r .bd li {
-    height: 28px;
+    display: flex;              /* 启用弹性布局 */
+    justify-content: space-between; /* 左右两端对齐 */
+    align-items: center;        /* 垂直居中 */
+    
+    height: 28px;               /* 适当增加高度，让间距更舒服 */
     line-height: 28px;
-    background: url("../images/red.png") no-repeat left center;
-    padding-left: 20px;
-    margin-left: 0px
+    background: url("../images/red.png") no-repeat left center; /* 保留原来的小红点 */
+    padding-left: 20px;         /* 给小红点留位置 */
+    overflow: hidden;           /* 防止内容溢出 */
 }
 
+/* 左侧：项目名称链接 */
+.home1r .bd li a {
+    flex: 1;                    /* 占据剩余所有空间 */
+    text-align: left;           /* 文字左对齐 */
+    color: #333;
+    text-decoration: none;
+    
+    /* [关键] 防止文字过长换行，超出部分显示省略号 */
+    white-space: nowrap;        
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+    margin-right: 15px;         /* 跟右边的日期保持距离 */
+}
+
+/* 鼠标悬停变色 */
+.home1r .bd li a:hover {
+    color: #1560e2;             /* 悬停变蓝 */
+}
+
+/* 右侧：日期时间 */
 .home1r .bd li span {
-    float: right;
+    flex-shrink: 0;             /* 禁止日期被压缩 */
     font-size: 12px;
-    color: #666;
-    text-align: right;
+    color: #888;                /* 日期颜色淡一点 */
+    font-family: Arial, sans-serif; /* 数字字体优化 */
 }
 
 
@@ -456,7 +498,8 @@ a:hover {
     height: 48px;
     line-height: 48px;
     text-align: center;
-    background: #C00;
+    /* [修改] 按钮背景：亮蓝 */
+    background: #1560e2;
     float: left;
     margin-right: 20px;
     margin-top: 18px;
@@ -469,7 +512,8 @@ a:hover {
 }
 
 .jjtab li:hover {
-    background: #F60;
+    /* [修改] 按钮悬停背景：深蓝 */
+    background: #2a52be;
 }
 
 .jjtab .rrr {
@@ -525,7 +569,8 @@ a:hover {
 }
 
 .home2 .hometab .tabtj dd.ddms:hover {
-    color: #930
+    /* [修改] 文字悬停：深蓝 */
+    color: #2a52be;
 }
 
 .home2 .hometab .tabtj img {
@@ -534,7 +579,8 @@ a:hover {
 }
 
 .home2 .hometab .tabtj img:hover {
-    border: 2px solid #F30;
+    /* [修改] 图片边框悬停：亮蓝 */
+    border: 2px solid #1560e2;
 }
 
 .home2 .hometab .tablb {
@@ -547,6 +593,7 @@ a:hover {
 }
 
 .home2 .hometab .tablb ul li {
+    /* [注意] red.png */
     background: url("../images/red.png") no-repeat left center;
     padding-left: 20px;
 }
@@ -642,8 +689,9 @@ a:hover {
 }
 
 .blk_18 a.pl:hover {
-    border: 1px solid #C00;
-    color: #C00;
+    /* [修改] 团队图片悬停边框/文字：亮蓝 */
+    border: 1px solid #1560e2;
+    color: #1560e2;
     background: #eee;
 }
 
@@ -721,7 +769,8 @@ a:hover {
     float: left;
     background: #F0F0F0;
     width: 220px;
-    border-top: 5px #C00 solid;
+    /* [修改] 侧边栏顶部边框：亮蓝 */
+    border-top: 5px #1560e2 solid;
     margin-left: 30px;
     padding-left: 25px;
     padding-bottom: 20px;
@@ -738,6 +787,7 @@ a:hover {
 }
 
 .nymenu ul li {
+    /* [注意] red.png */
     background: url("../images/red.png") no-repeat left center;
     padding-left: 20px;
     height: 35px;
@@ -941,8 +991,9 @@ a:hover {
 
 /* SPAN和链接 */
 .page a:hover, .page a.current {
-    color: #F44;
-    border: 1px solid #F44
+    /* [修改] 翻页选中/悬停：亮蓝 */
+    color: #1560e2;
+    border: 1px solid #1560e2;
 }
 
 /* 当前链接有激活时 */
@@ -972,44 +1023,56 @@ a:hover {
 
 .footer {
     width: 100%;
+    height: 180px;          /* 保持这个高度 */
+    background: #2a52be;    /* 深蓝色背景 */
     border-top: 1px #555 solid;
-    background: #900;
-    /*background:url(../images/hn-foot-bg.jpg) no-repeat center center; */
-    height: 120px;
-    padding: 30px 0;
+    
+    /* 【核心修改1】使用 Flex 布局实现绝对垂直居中 */
+    display: flex;          
+    align-items: center;    /* 垂直方向居中 */
+    justify-content: center;/* 水平方向居中 */
+    
+    /* 【核心修改2】强制隐藏滚动条 */
+    overflow: hidden;       
+    
     position: relative;
-    bottom: 0;
-    left: 0;
-    min-width: 1200px;
-    font-size: 14px;
+    padding: 0;             /* 清除内边距，完全靠 Flex 居中 */
 }
 
+/* 内容容器 */
 .footmm {
-    width: 1200px;
-    margin: 0 auto;
-    height: auto;
-    position: relative;
-    overflow: auto;
+    width: 100%;
+    max-width: 1200px;      /* 内容区域最大宽度 */
+    position: relative;     /* 作为 Logo 定位的参考父级 */
+    height: auto;           /* 高度随内容自适应 */
+    /* overflow: visible;      确保 Logo 不会被切掉 */
 }
 
+/* 文字样式调整 */
 .footer p {
     text-align: center;
-    width: 1200px;
-    margin: 0 auto;
-    color: #FFF
+    width: 100%;
+    color: #FFF;
+    margin: 5px 0;          /* 控制两行文字之间的间距 */
+    
+    /* 【核心修改3】字体调大 */
+    font-size: 16px;        /* 原来是14px，现在改为16px，觉得不够大可改为 18px */
+    letter-spacing: 1px;    /* 字间距稍微加宽一点点，更美观 */
+    line-height: 1.8;       /* 行高优化 */
+}
+
+/* 链接文字颜色 */
+.footer p a {
+    color: #FFF;
+    font-size: 16px;        /* 保持一致 */
+    text-decoration: none;
+}
+.footer p a:hover {
+    color: #FFD700;         /* 悬停变成金色，比红色更好看 */
 }
 
 .footer p img {
     margin: 10px 0;
-}
-
-.footer p a {
-    color: #FFF;
-    font-size: 14px;
-}
-
-.footer p a:hover {
-    color: #F60
 }
 
 .footmm .wx {
@@ -1072,8 +1135,8 @@ a:hover {
 }
 
 /*.g-team .item ul{*/
-/*    display:block;*/
-/*       list-style-type:none;*/
+/* display:block;*/
+/* list-style-type:none;*/
 /*margin:-5px;*/
 /*}*/
 .g-team .item ul li {
@@ -1089,7 +1152,8 @@ a:hover {
     width: 6px;
     height: 6px;
     border-radius: 3px;
-    background: #900;
+    /* [修改] 列表前小圆点：亮蓝 */
+    background: #1560e2;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -1186,7 +1250,8 @@ a:hover {
     width: 6px;
     height: 6px;
     border-radius: 3px;
-    background: #900;
+    /* [修改] 列表前小圆点：亮蓝 */
+    background: #1560e2;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -1229,7 +1294,7 @@ a:hover {
 }
 
 /*.des2 p {*/
-/*    */
+/* */
 /*}*/
 
 .des_img {
@@ -1290,15 +1355,52 @@ box-shadow: 8px 8px 15px 0px rgba(0, 0, 0, .3);
 .main-box .list li:hover .date2 p:first-child { color: #fff; }
 .main-box .list li:hover .date2 p:first-child:after { background: #fff; }
 .main-box .list li:hover .date2:before { -webkit-transform: rotateY(0deg); -moz-transform: rotateY(0deg); -o-transform: rotateY(0deg); transform: rotateY(0deg); }
-.main-box .list li:hover .title { color: #900; }
+/* [修改] 悬停标题颜色：深蓝 */
+.main-box .list li:hover .title { color: #2a52be; }
 .main-box .list li:hover .info { color: #333; }
-.main-box .list .date2 { width: 10%; text-align: center; color: #900; border: 1px solid #900; -webkit-border-radius: 10px; -moz-border-radius: 10px; -o-border-radius: 10px; border-radius: 10px; font-size: 18px; font-family: Arial, Helvetica, sans-serif; position: relative; overflow: hidden; }
+/* [修改] 日期框边框和颜色：亮蓝 */
+.main-box .list .date2 { width: 10%; text-align: center; color: #1560e2; border: 1px solid #1560e2; -webkit-border-radius: 10px; -moz-border-radius: 10px; -o-border-radius: 10px; border-radius: 10px; font-size: 18px; font-family: Arial, Helvetica, sans-serif; position: relative; overflow: hidden; }
 .main-box .list .date2 p { position: relative; z-index: 2; -webkit-transition: all 0.35s ease 0s; -moz-transition: all 0.35s ease 0s; -o-transition: all 0.35s ease 0s; transition: all 0.35s ease 0s; }
-.main-box .list .date2 p:first-child { font-size: 18px; color: #900; margin: 0 0 .05rem; }
-.main-box .list .date2 p:first-child:after { display: block; content: ""; box-sizing: border-box; width: 74%; height: 1px; margin: 0 auto; background: #900; -webkit-transform: rotateY(0deg); -moz-transform: rotateY(0deg); -o-transform: rotateY(0deg); transform: rotateY(0deg); }
+/* [修改] 日期文字：亮蓝 */
+.main-box .list .date2 p:first-child { font-size: 18px; color: #1560e2; margin: 0 0 .05rem; }
+/* [修改] 日期中线：亮蓝 */
+.main-box .list .date2 p:first-child:after { display: block; content: ""; box-sizing: border-box; width: 74%; height: 1px; margin: 0 auto; background: #1560e2; -webkit-transform: rotateY(0deg); -moz-transform: rotateY(0deg); -o-transform: rotateY(0deg); transform: rotateY(0deg); }
 .main-box .list .date2:before { display: block; content: ""; box-sizing: border-box; position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 1; background-image: url("../images/date_bg.png"); background-repeat: no-repeat; background-position: 50% 50%; background-color: transparent; background-size: cover; -webkit-transition: all 0.35s ease 0s; -moz-transition: all 0.35s ease 0s; -o-transition: all 0.35s ease 0s; transition: all 0.35s ease 0s; -webkit-transform: rotateY(90deg); -moz-transform: rotateY(90deg); -o-transform: rotateY(90deg); transform: rotateY(90deg); transform-origin: 0 50%; }
 .main-box .list .text { width: 50%; }
 .main-box .list .title1 { display: block; width: 60%; height: auto; max-height: none; margin: 0; }
 .main-box .list .info { max-height: 40px; margin: 4px 0 0; line-height: 20px; -webkit-line-clamp: 2; }
 
+/* --- 新增的页脚 Logo 样式 --- */
 
+/* 确保父容器可以被定位参照 */
+.footmm {
+    position: relative; 
+}
+
+/* 左侧 Logo 组合 */
+.foot-logos {
+    position: absolute;     /* 绝对定位，不占位 */
+    left: 20px;             /* 距离左边 20px，别贴太死 */
+    top: 50%;               /* 垂直定位在中间 */
+    transform: translateY(-50%); /* 修正自身的偏移，实现完美居中 */
+    
+    display: flex;          /* 让两个图片横向排 */
+    align-items: center;    /* 图片垂直对齐 */
+    z-index: 10;
+}
+
+/* Logo 图片大小 */
+.foot-logos img {
+    height: 110px;           /* Logo高度，根据需要调整 (80px - 100px 都不错) */
+    width: auto;            /* 宽度自动 */
+    margin-right: 20px;     /* 两个 Logo 之间的间距 */
+    border: none;
+    background: transparent;/* 防止图片自带白色背景干扰 */
+}
+
+/* 移动端适配：屏幕变窄时隐藏 Logo，防止遮挡文字 */
+@media screen and (max-width: 1300px) {
+    .foot-logos {
+        display: none;      /* 屏幕太窄就藏起来，保证文字能看清 */
+    }
+}
